@@ -173,27 +173,26 @@ def on_key_press(event):
 
 def go(cycle=True):
     snake.go()
-    print_map_console()
+    print(get_map("+ ", "* ", "$ ", "0 "))
     if cycle:
         root.after(speed, go)
 
 
-def print_map_console():
+def get_map(head: str, body: str, food: str, empty: str):
     all_pixels = ""
     for y in reversed(range(scr_size_y)):
         for x in range(scr_size_x):
             if snake.head_is_on(x, y):
-                all_pixels += "+"
+                all_pixels += head
             elif snake.body_is_on(x, y):
-                all_pixels += "*"
+                all_pixels += body
             elif snake.food_is_on(x, y):
-                all_pixels += "$"
+                all_pixels += food
             else:
-                all_pixels += "O"
+                all_pixels += empty
         all_pixels += "\n"
-    print("----------------------------")
-    print(all_pixels)
-    print("----------------------------")
+
+    return all_pixels
 
 
 root = tk.Tk()
