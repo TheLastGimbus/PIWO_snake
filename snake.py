@@ -1,8 +1,9 @@
 import tkinter as tk
 import random
+import time
 
-scr_size_x = 6
-scr_size_y = 4
+scr_size_x = 2
+scr_size_y = 2
 speed = 500  # how often snake moves in ms
 
 
@@ -12,6 +13,8 @@ class Snake:
     direction = "up"
     end_direction = "down"
     tail = [[head_x, head_y], [head_x, head_y - 1]]
+
+    time_started = time.time()
 
     food_x = 0
     food_y = 0
@@ -110,6 +113,10 @@ class Snake:
                 to_append = [to_append[0] + 1, to_append[1]]
 
             self.tail.append(to_append)
+            if len(self.tail) >= scr_size_x * scr_size_y:
+                print("You won! Time:")
+                print(time.time() - self.time_started)
+                raise SystemExit
 
     def cut_tail_in_index(self, index: int = 1):
         if len(self.tail) > index:
@@ -169,6 +176,28 @@ def on_key_press(event):
         snake.turn_right()
     if key == "w":
         go(False)
+
+    global speed  # speed controll
+    if key == "1":
+        speed = 100
+    if key == "2":
+        speed = 200
+    if key == "3":
+        speed = 300
+    if key == "4":
+        speed = 400
+    if key == "5":
+        speed = 500
+    if key == "6":
+        speed = 600
+    if key == "7":
+        speed = 700
+    if key == "8":
+        speed = 800
+    if key == "9":
+        speed = 900
+    if key == "0":
+        speed = 1000
 
 
 def go(cycle=True):
