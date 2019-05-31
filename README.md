@@ -1,6 +1,5 @@
 # PIWO_snake
 
-
 ### PL:
 ##### Czym jest PIWO Lite?
 Zamysłem projektu PIWO Lite jest zrobienie ekranu z całego budynku. Oryginalnymi autorami tego pomysłu jest koło naukowe MOS z Politechniki Wrocławskiej, więcej o ich projekcie znajdziesz tutaj:
